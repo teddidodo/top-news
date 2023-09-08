@@ -1,0 +1,59 @@
+<template>
+    <div>
+            <div class="q-pa-md">
+                <h2 class="text-h6 q-mb-md">Login to Your Account</h2>
+                <q-form @submit="login">
+                    <div class="text-caption q-my-sm">Email</div>
+                    <q-input v-model="formData.email" outlined dense @input="clearError" />
+                    <div class="text-caption q-my-sm">Password</div>
+                    <q-input v-model="formData.password" type="password" outlined dense
+                        @input="clearError" />
+                    <q-btn type="submit" label="Login" color="primary" class="q-my-md" />
+                    <br>
+                    <a class="q-my-md text-overline" href="/account/register" >Don't have an account yet!</a>
+                    <q-alert v-if="error" color="negative" icon="warning" :options="{ dense: true }">
+                        {{ error }}
+                    </q-alert>
+                </q-form>
+            </div>
+    </div>
+</template>
+  
+<script>
+import { ref } from 'vue'
+export default {
+    name: 'MyLogin',
+    setup() {
+        const formData = ref({
+            email: '',
+            password: ''
+        })
+
+        const error = ref('')
+        return {
+            formData,
+            error
+        };
+    },
+    methods: {
+        login() {
+            // Implement your authentication logic here
+            // For a basic example, you can compare the user's input with predefined credentials
+            if (
+                this.formData.email === 'user@example.com' &&
+                this.formData.password === 'password'
+            ) {
+                // Successful login, navigate to another page (e.g., dashboard)
+                // this.$router.push('/dashboard');
+            } else {
+                // Invalid credentials, display an error message
+                this.error = 'Invalid email or password';
+            }
+        },
+        clearError() {
+            this.error = '';
+        },
+    },
+};
+</script>
+  
