@@ -13,7 +13,7 @@ router.beforeEach(async (to, from, next) => {
     // console.log(to, from)
     
     let token = localStorage.getItem('user_session')
-    console.log(process.env.KEY)
+    console.log(process.env.API)
     if(token === null) {
         localStorage.setItem('user_session', process.env.KEY)
         next('/login')
