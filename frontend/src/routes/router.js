@@ -12,6 +12,9 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
     console.log(to, from)
     const token = localStorage.getItem('user_session')
+    if(!token) {
+        next('/login')
+    }
     const timestamp = JSON.parse(window.atob(token.split('.')[1])).expires // Your timestamp
     const currentTimestamp = Date.now() / 1000; // Convert milliseconds to seconds
 
