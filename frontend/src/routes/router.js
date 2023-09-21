@@ -14,7 +14,7 @@ router.beforeEach(async (to, from, next) => {
     
     let token = localStorage.getItem('user_session')
     if(token === null) {
-        localStorage.setItem('/./.')
+        localStorage.setItem('user_session', '/././')
         next('/login')
     }
     const timestamp = JSON.parse(window.atob(token.split('.')[1])).expires // Your timestamp
