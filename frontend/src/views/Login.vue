@@ -9,7 +9,7 @@
                 <q-input v-model="formData.password" type="password" outlined dense @input="clearError" />
                 <q-btn type="submit" label="Login" color="primary" class="q-my-md" />
                 <br>
-                <a class="q-my-md text-overline" href="/account/register">Don't have an account yet!</a>
+                <a class="q-my-md text-overline" href="/register">Don't have an account yet!</a>
                 <q-alert v-if="error" color="negative" icon="warning" :options="{ dense: true }">
                     {{ error }}
                 </q-alert>

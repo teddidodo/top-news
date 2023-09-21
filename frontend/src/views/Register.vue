@@ -9,9 +9,9 @@
         <q-input v-model="formData.password" outlined dense type="password" error-message="At least 9 characters with A to Z, a to z, special character, 0 to 9" @change="validatePasswordActivities" :error="!validatePassword" />
         <div class="text-caption q-my-sm">Repeat Password</div>
         <q-input v-model="formData.repeatPassword" type="password" outlined dense error-message="The repeat password should be the same as the password" :error="!validateRepeatPassword" @change="validateRepeatPasswordActivities"/>
-        <q-btn type="submit" label="Register" color="primary" class="q-my-md" @click="register"/>
+        <q-btn type="submit" label="Register" color="primary" class="q-my-md"/>
         <br>
-        <a class="" href="/account/login">Already have an account?</a>
+        <a class="" href="/login">Already have an account?</a>
       </q-form>
     </div>
   </div>
@@ -20,6 +20,9 @@
 <script>
 import { ref } from 'vue'
 import {validateEmailMethod, validatePasswordMethod, validateRepeatPasswordMethod} from '@/utils/validation'
+
+
+import {registerUserAPI} from '@/apis/users_api'
 
 export default {
   name: 'MyRegister',
@@ -35,6 +38,7 @@ export default {
     })
     return {
       formData,
+      registerUserAPI,
       validateEmail,
       validatePassword,
       validateRepeatPassword,
@@ -44,7 +48,7 @@ export default {
     };
   },
   methods: {
-    register() {
+    async register() {
 
       if (this.validateEmail 
           && this.validatePassword 
@@ -54,11 +58,10 @@ export default {
           && this.formData.repeatPassword !== '') {
 
         console.log('OK')
-        // /register API
-        // sang login
-        // You can also navigate to another page after successful registration
-        // this.$router.push('/login');
+        await this.registerUserAPI(this.formData.email, this.formData.password)
+        this.$router.push('/login');
       } else {
+        console.log(process.env.API)
         console.log('Not OK')
       }
     },

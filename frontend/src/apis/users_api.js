@@ -13,70 +13,11 @@ export const readUser = async (email) => {
     }
 }
 
-
-
-
-
-    // try {
-    //   const eventsDynastyPromise = HTTP.get("/events/" + this.currentPage.dynasty)
-    //   const eventsResult = await eventsDynastyPromise;
-
-    //   const data = eventsResult.data
-    //   this.contents_heads = Object.keys(data).reverse()
-    //   this.events = Object.entries(data).reverse()
-    //   this.events = this.events.map((event) => {
-    //     return [event[0], event[1].reverse()]
-    //   })
-    // } catch (error) {
-    //   console.log(error);
-    // }
-  
-
-
-//   async getTimeline() {
-//     try {
-//       const eventsDynastyPromise = HTTP.get("/events/" + this.currentPage.dynasty)
-//       const eventsResult = await eventsDynastyPromise;
-
-//       const data = eventsResult.data
-//       this.contents_heads = Object.keys(data).reverse()
-//       this.events = Object.entries(data).reverse()
-//       this.events = this.events.map((event) => {
-//         return [event[0], event[1].reverse()]
-//       })
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-//   async getTimeline() {
-//     try {
-//       const eventsDynastyPromise = HTTP.get("/events/" + this.currentPage.dynasty)
-//       const eventsResult = await eventsDynastyPromise;
-
-//       const data = eventsResult.data
-//       this.contents_heads = Object.keys(data).reverse()
-//       this.events = Object.entries(data).reverse()
-//       this.events = this.events.map((event) => {
-//         return [event[0], event[1].reverse()]
-//       })
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-// async getTimeline() {
-//     try {
-//       const eventsDynastyPromise = HTTP.get("/events/" + this.currentPage.dynasty)
-//       const eventsResult = await eventsDynastyPromise;
-
-//       const data = eventsResult.data
-//       this.contents_heads = Object.keys(data).reverse()
-//       this.events = Object.entries(data).reverse()
-//       this.events = this.events.map((event) => {
-//         return [event[0], event[1].reverse()]
-//       })
-//     } catch (error) {
-//       console.log(error);
-//     }
-// }
+export const registerUserAPI = async (email, password) => {
+  try {
+    const registerUserPromise = HTTP.post('/register', { email, password }, { headers: return_authorization_header() })
+    await requestAPI(registerUserPromise)
+  } catch (error) {
+    console.log(error);
+  }
+}
