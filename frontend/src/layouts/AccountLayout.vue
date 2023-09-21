@@ -1,11 +1,11 @@
 <template>
-  <q-layout class="" :style="{background: '#24295e'}">
+  <q-layout class="bg-grey-1">
   
 
     <q-page-container style="padding-top: 10%; padding-left: 25%; padding-right: 25%">
-      <q-card class="" >
+      <!-- <q-card class="" > -->
         <router-view></router-view>
-      </q-card>
+      <!-- </q-card> -->
       <!-- <div class="flex flex-center">Duc Thanh Do</div> -->
     </q-page-container>
   </q-layout>

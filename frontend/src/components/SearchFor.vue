@@ -1,8 +1,5 @@
 <template>
-  <div class="text-h5 flex flex-center q-mt-md">Search For:</div>
-  <!-- <q-page class="flex flex-center"> -->
-    <!-- <img alt="Quasar logo" src="../assets/logo.svg" style="width: 200px; height: 200px"> -->
-  <!-- </q-page> -->
+  <div class="text-h5 flex flex-center q-mt-md">Searching For: '{{ query }}'</div>
 </template>
 
 <style>
@@ -10,6 +7,9 @@
 
 <script>
 export default {
-  name: 'SearchFor'
+  name: 'SearchFor',
+  props: [
+    'query'
+  ]
 }
 </script>

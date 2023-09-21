@@ -1,29 +1,17 @@
 const routes = [
   {
     path: '/',
-    component: () => import('@/views/Home.vue'),
-  },
-  {
-    path: '/news',
-    component: () => import('@/layouts/Layout.vue'),
+    component: () => import('@/layouts/AccountLayout.vue'),
     children: [
       {
         path: '',
-        name: 'news',
-        component: () => import('../views/Search.vue')
-
+        component: () => import('@/views/Home.vue'),
       },
-      {
-        path: 'profile/:username',
-        name: 'profile',
-        component: () => import('../views/Profile.vue')
-      }
-    ]
-  },
-  {
-    path: '/account',
-    component: () => import('@/layouts/AccountLayout.vue'),
-    children: [
+      // {
+      //   path: 'profile/:username',
+      //   name: 'profile',
+      //   component: () => import('../views/Profile.vue')
+      // },
       {
         path: 'login',
         name: 'login',
@@ -37,7 +25,19 @@ const routes = [
     ]
   },
   {
-    path: '/not_found',
+    path: '/news',
+    component: () => import('@/layouts/Layout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'news',
+        component: () => import('../views/Search.vue')
+
+      },
+    ]
+  },
+  {
+    path: '/:pathMatch(.*)*',
     name: 'not_found',
     component: () => import('@/views/NotFound.vue'),
   }

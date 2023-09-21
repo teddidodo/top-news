@@ -3,33 +3,24 @@ import {
     createWebHistory
 } from "vue-router";
 import routes from "./routes";
-// import { usePage } from "../store/usePage";
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 })
 
-// async function randomDynasty(currentPage) {
-    // try {
-    //   const random_dynastyPromise = HTTP.get("/random/dynasty");
-    //   const random_dynasty = await random_dynastyPromise;
-    //   currentPage.dynasty_headline = random_dynasty.data;
-    // } catch (error) {
-    //   console.log(error);
-    // }
-// }
+router.beforeEach(async (to, from, next) => {
+    console.log(to, from)
+    const token = localStorage.getItem('user_session')
+    const timestamp = JSON.parse(window.atob(token.split('.')[1])).expires // Your timestamp
+    const currentTimestamp = Date.now() / 1000; // Convert milliseconds to seconds
 
-// router.beforeEach(async (to) => {
-//     const currentPage = usePage();
-//     if (to.path === '/') {
-//         currentPage.page = 'home'
-//         await randomDynasty(currentPage)
-//     } else {
-//         currentPage.page = 'timeline'
-//         currentPage.dynasty = to.params.dynasty
-//     }
-// })
-
+    if (to.path !== '/login' && to.path !== '/register' && timestamp <= currentTimestamp) {
+        console.log("The provided timestamp is in the past.");
+        next('/login')
+    }
+    console.log("The provided timestamp is equal to the current timestamp.");
+    next()
+})
 
 export default router;
