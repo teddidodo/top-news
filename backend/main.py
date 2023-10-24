@@ -1,21 +1,13 @@
-from fastapi import FastAPI, Depends, HTTPException, APIRouter
-# from sqlalchemy.orm import SessionS
-from typing import List
-# from model import Dynasty, Event
-# from schema import DynastySchema, EventSchema
-# from session import create_get_session
+from fastapi import FastAPI, Depends, HTTPException
 from starlette.middleware.cors import CORSMiddleware
-# import random
-# from sqlalchemy import func
-
 from routers import news, users, auth
-
 app = FastAPI()
-router = APIRouter()
 
 #: Configure CORS
 origins = [
     "http://localhost:8080",
+    "https://top-news-td.vercel.app",
+    "https://top-news-hck015lyd-teddidodo.vercel.app/"
 ]
 
 app.add_middleware(

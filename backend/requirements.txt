@@ -12,5 +12,10 @@ starlette==0.22.0
 typing-extensions==4.4.0
 uvicorn
 requests==2.31.0
-feedparser==5.2.1
+feedparser
 beautifulsoup4==4.12.2
+bcrypt
+passlib
+PyJWT
+newsdataapi
+python-dotenv
