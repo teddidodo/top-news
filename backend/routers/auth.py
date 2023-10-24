@@ -23,13 +23,3 @@ def login(user_credentials: schema.UserLogin, db: Session = Depends(get_db)):
     access_token = jwt_auth.signJWT(user.id)
 
     return {'access_token': access_token, 'token_type': 'bearer'}
-
-# @router.delete('/logout')
-# def logout(token: dict = Depends(jwt_auth.JWTBearer())):
-
-#     if not token:
-#         raise HTTPException(
-#             status_code=status.HTTP_403_FORBIDDEN, detail='Not Authenticated!'
-#         )
-
-#     return []

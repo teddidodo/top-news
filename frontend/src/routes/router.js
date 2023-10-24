@@ -13,9 +13,9 @@ router.beforeEach(async (to, from, next) => {
     // console.log(to, from)
     
     let token = localStorage.getItem('user_session')
-    console.log(process.env.API)
+    // console.log(process.env)
     if(token === null) {
-        localStorage.setItem('user_session', process.env.KEY)
+        localStorage.setItem('user_session', process.env.VUE_APP_KEY)
         next('/login')
     }
     const timestamp = JSON.parse(window.atob(token.split('.')[1])).expires // Your timestamp

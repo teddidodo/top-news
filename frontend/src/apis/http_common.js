@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const HTTP = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? process.env.API : process.env.API,
+  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_API : process.env.VUE_APP_API,
   headers: {}
 });
 
